@@ -3,7 +3,7 @@ const express = require('express')
 // Passport docs: http://www.passportjs.org/docs/
 const passport = require('passport')
 
-// pull in Mongoose model for examples
+// pull in Mongoose model for jokes
 const Joke = require('../models/joke')
 
 // this is a collection of methods that help us detect situations when we need
@@ -28,24 +28,24 @@ const requireToken = passport.authenticate('bearer', { session: false })
 const router = express.Router()
 
 // INDEX
-// GET /examples
-router.get('/examples', requireToken, (req, res, next) => {
+// GET /jokes
+router.get('/jokes', requireToken, (req, res, next) => {
   Joke.find()
-    .then(examples => {
-      // `examples` will be an array of Mongoose documents
+    .then(jokes => {
+      // `jokes` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
       // apply `.toObject` to each one
-      return examples.map(joke => joke.toObject())
+      return jokes.map(joke => joke.toObject())
     })
-    // respond with status 200 and JSON of the examples
-    .then(examples => res.status(200).json({ examples: examples }))
+    // respond with status 200 and JSON of the jokes
+    .then(jokes => res.status(200).json({ jokes: jokes }))
     // if an error occurs, pass it to the handler
     .catch(next)
 })
 
 // SHOW
-// GET /examples/5a7db6c74d55bc51bdf39793
-router.get('/examples/:id', requireToken, (req, res, next) => {
+// GET /jokes/5a7db6c74d55bc51bdf39793
+router.get('/jokes/:id', requireToken, (req, res, next) => {
   // req.params.id will be set based on the `:id` in the route
   Joke.findById(req.params.id)
     .then(handle404)
@@ -56,8 +56,8 @@ router.get('/examples/:id', requireToken, (req, res, next) => {
 })
 
 // CREATE
-// POST /examples
-router.post('/examples', requireToken, (req, res, next) => {
+// POST /jokes
+router.post('/create-jokes', requireToken, (req, res, next) => {
   // set owner of new joke to be current user
   req.body.joke.owner = req.user.id
 
@@ -73,8 +73,8 @@ router.post('/examples', requireToken, (req, res, next) => {
 })
 
 // UPDATE
-// PATCH /examples/5a7db6c74d55bc51bdf39793
-router.patch('/examples/:id', requireToken, removeBlanks, (req, res, next) => {
+// PATCH /jokes/5a7db6c74d55bc51bdf39793
+router.patch('/jokes/:id/edit', requireToken, removeBlanks, (req, res, next) => {
   // if the client attempts to change the `owner` property by including a new
   // owner, prevent that by deleting that key/value pair
   delete req.body.joke.owner
@@ -96,8 +96,8 @@ router.patch('/examples/:id', requireToken, removeBlanks, (req, res, next) => {
 })
 
 // DESTROY
-// DELETE /examples/5a7db6c74d55bc51bdf39793
-router.delete('/examples/:id', requireToken, (req, res, next) => {
+// DELETE /jokes/5a7db6c74d55bc51bdf39793
+router.delete('/jokes/:id', requireToken, (req, res, next) => {
   Joke.findById(req.params.id)
     .then(handle404)
     .then(joke => {
