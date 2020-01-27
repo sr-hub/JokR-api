@@ -57,7 +57,7 @@ router.get('/jokes/:id', requireToken, (req, res, next) => {
 
 // CREATE
 // POST /jokes
-router.post('/create-jokes', requireToken, (req, res, next) => {
+router.post('/jokes/create-joke', requireToken, (req, res, next) => {
   // set owner of new joke to be current user
   req.body.joke.owner = req.user.id
 

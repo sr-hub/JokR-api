@@ -18,4 +18,4 @@ const jokeSchema = new mongoose.Schema({
   timestamps: true
 })
 
-module.exports = mongoose.model('Example', jokeSchema)
+module.exports = mongoose.model('Joke', jokeSchema)
