@@ -31,6 +31,7 @@ const router = express.Router()
 // GET /favorites
 router.get('/favorites', requireToken, (req, res, next) => {
   FavoriteJoke.find()
+    .populate('joke')
     .then(favorites => {
       // `favorites` will be an array of Mongoose documents
       // we want to convert each one to a POJO, so we use `.map` to
@@ -83,6 +84,7 @@ router.patch('/favorites/:id/edit', requireToken, removeBlanks, (req, res, next)
 
   FavoriteJoke.findById(req.params.id)
     .then(handle404)
+    .populate('joke')
     .then(favorite => {
       // pass the `req` object and the Mongoose record to `requireOwnership`
       // it will throw an error if the current user isn't the owner

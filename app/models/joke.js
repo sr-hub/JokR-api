@@ -14,6 +14,11 @@ const jokeSchema = new mongoose.Schema({
     ref: 'User',
     required: true
   }
+  //  favorited: {
+  //   type: mongoose.Schema.Types.ObjectId,
+  //   ref: 'FavoriteJoke',
+  //   required: true
+  // }
 }, {
   timestamps: true
 })
