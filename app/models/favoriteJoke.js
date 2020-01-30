@@ -10,7 +10,7 @@ const favoriteJokeSchema = new mongoose.Schema({
     ref: 'Joke',
     required: true
   },
-  owner: {
+  listOwner: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
     required: true

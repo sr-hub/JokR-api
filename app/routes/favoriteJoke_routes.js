@@ -59,11 +59,13 @@ router.get('/favorites/:id', requireToken, (req, res, next) => {
 // POST /favorites
 router.post('/favorites/create-favorite', requireToken, (req, res, next) => {
   // set owner of new favorite to be current user
-  req.body.favorite.owner = req.user.id
+  console.log('api req.body:', req.body)
+  req.body.listOwner = req.user._id
 
   FavoriteJoke.create(req.body.favorite)
     // respond to succesful `create` with status 201 and JSON of new "favorite"
     .then(favorite => {
+      console.log('favorite', favorite)
       res.status(201).json({ favorite: favorite.toObject() })
     })
     // if an error occurs, pass it off to our error handler
