@@ -1,13 +1,16 @@
-README
+README:
+
 This application allows users to sign in to create, edit, and delete jokes connected to their accounts, and view jokes without being registered. Any registered user can create jokes and save user-made jokes.
 
-Technologies Used
+Technologies Used:
+
 MongoDB
 Mongoose
 Express
 JS, Node.js
 Heroku
-ERD and Planning Process Used
+
+ERD and Planning Process Used:
 The user resource represents the user of the app. From there, a user has many jokes - both those they can create and those they can acquire from public api's (this is still a work in progress). These jokes populate the ID of user, calling that user the owner of the joke. Users can save jokes as favorite jokes to access at a later time. In future versions, users will be able to save third-party jokes and share jokes with friends.
 
 ERD for our resources is at this link: https://imgur.com/a/0QtmppG
