@@ -16,25 +16,32 @@ The user resource represents the user of the app. From there, a user has many jo
 ## ERD for our resources is at this link: https://imgur.com/a/0QtmppG
 
 ## Routes Catalog
-The API for this blog accepts requests for user, posts, and comments. For users, it contains SIGN UP (POST), SIGN IN (POST), CHANGE PASSWORD (PATCH), and SIGN OUT (DELETE).
+The API for this blog accepts requests for user, jokes, and favorites. For users, it contains SIGN UP (POST), SIGN IN (POST), CHANGE PASSWORD (PATCH), and SIGN OUT (DELETE).
 
-request	url	action	response
-POST	'/users'	create	201
-PATCH	'/users/:id'	update	204
-DELETE	'/users/:id'	delete	204
-For posts, it contains INDEX for GETing all of the post, SHOW for GETing one, CREATE, UPDATE, and DESTROY.
+| request |      url     | action | response |
+|:-------:|:------------:|:------:|:--------:|
+| POST    | '/users'     | create |    201   |
+| PATCH   | '/users/:id' | update |    204   |
+| DELETE  | '/users/:id' | delete |    204   |
 
-request	url	action	response
-GET	'/jokes'	index	200
-GET	'/jokes/:id'	show	200
-POST	'/create-joke'	create	201
-PATCH	'/jokes/:id'	update	204
-DELETE	'/jokes/:id'	delete	204
-For comments, it contains CREATE, UPDATE, and DESTROY.
+For jokes, it contains INDEX for GETing all of the post, SHOW for GETing one, CREATE, UPDATE, and DESTROY.
 
-request	url	action	response
-POST	'/favorites'	create	201
-DELETE	'/favorites/:favoriteid'	delete	204
+| request |      url     | action | response |
+|:-------:|:------------:|:------:|:--------:|
+| GET     | '/jokes'     | index  |    200   |
+| GET     | '/jokes/:id' | show   |    200   |
+| POST    | '/jokes'     | create |    201   |
+| PATCH   | '/jokes/:id' | update |    204   |
+| DELETE  | '/jokes/:id' | delete |    204   |
+
+
+For favorites, it contains CREATE, UPDATE, and DESTROY.
+
+
+| request |      url                       | action | response |
+|:-------:|:------------------------------:|:------:|:--------:|
+| POST    | '/favorites'                   | create |    201   |
+| DELETE  | '/favorites/:favoriteId'       | delete |    204   |
 
 ## This API is hosted on Heroku at this link: https://obscure-peak-32326.herokuapp.com/
 
