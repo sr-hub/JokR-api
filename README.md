@@ -43,11 +43,12 @@ For favorites, it contains CREATE, UPDATE, and DESTROY.
 | POST    | '/favorites'                   | create |    201   |
 | DELETE  | '/favorites/:favoriteId'       | delete |    204   |
 
-#### This API is hosted on Heroku at this link: https://obscure-peak-32326.herokuapp.com/
 
-#### The web client is available at this link: https://sr-hub.github.io/JokR-front-end/#/
+#### Important Links
 
-#### The repository for the the front end can be found here: https://github.com/sr-hub/JokR-front-end/
+- [Deployed API](https://obscure-peak-32326.herokuapp.com/)
+- [Client Repository](https://github.com/sr-hub/JokR-front-end/)
+- [Deployed Client](https://sr-hub.github.io/JokR-front-end/#/)
 
 #### Current Issues
 Delete function on favorited jokes
